@@ -1,0 +1,38 @@
+<!-- Name: Ikem Amadiume
+	 Code: c0641055 -->
+
+<html>
+    <head>
+   </head>
+        <body ng-controller="ContactListCtrl">
+            <input ng-model ="query">
+            <select ng-model="orderProp">
+	                <option value='first'>First Name</option>
+	                <option value='last'>Last Name</option>
+	                <option value='extension'>Extension</option>
+             </select>
+      
+          
+   <table border="2" CELLSPACING="0" class="view" BORDERCOLOR="000000" bgcolor="#F1F1EA">
+	<thead>
+<tr>
+		<th>Image</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Phone Number</th>
+</tr>
+	</thead>
+		<tbody>
+		<tr ng-repeat="contact in contacts| filter:query | orderBy: 'orderProp'" class="contact">
+			<td> <a href="#/contacts/{{contact.id}}" class="thumb"><img src="{{contact.imageUrl}}"></td>
+			<td class='first'><a href="#/contacts/{{ contact.id}}" class="thumb">{{ contact.first}}</a></td>
+			<td class='last'><a href="#/contacts/{{ contact.id}}" class="thumb">{{ contact.last}}</a></td>
+			<td class='email'><a href="mailto:{{ contact.first+'.'+contact.last+'@lambtoncollege.ca' }}" >{{ contact.first+'.'+contact.last+'@lambtoncollege.ca' | sanitize }}</a></td>
+			<td class='Phone Number'>{{ '519-542-7751 ext. ' + contact.extension }}</td>
+		</tr>
+
+			</tbody>
+		</table>
+	</body>
+</html>
